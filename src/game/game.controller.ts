@@ -9,7 +9,7 @@ export const createGameHandler = async (
 ) => {
     try{
         const game = await createGame()
-        return res.send(game)
+        return res.send(game).status(201)
     }catch(e:any){
         return res.status(400).send(e.message)
     }
@@ -29,7 +29,7 @@ export const makeMoveHandler = async (
             })
         }
         const game = await makeMove({'_id': req.params.id}, moveData)
-        return res.send(game)
+        return res.send(game).status(201)
     }catch(e:any){
         return res.status(400).send(e.message)
     }
@@ -55,7 +55,7 @@ export const getGamesHandler = async (
 ) => {
     try{
         const games = await getGames()
-        return res.send(games)
+        return res.send(games).status(200)
     }catch(e:any){
         return res.status(400).send(e.message)
     }
