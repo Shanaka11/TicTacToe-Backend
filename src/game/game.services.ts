@@ -93,7 +93,10 @@ const validateMove = (currMove:MoveDocument, prevMove:MoveDocument, nextMove:pla
     }
 
     const diff = currMove.board.map((item:moveItem, index:number) => {
-        return item - prevMove.board[index]
+        const diffItem = item - prevMove.board[index]
+        if (diffItem === 1) return 1
+        if (diffItem === -1) return -1
+        return 0
     })
 
     diff.forEach((item) => {
